@@ -85,6 +85,17 @@ public class JobletUtil {
         }
         return false;
     }
+    
+    public boolean isJoblet(NodeType node){
+        EList listParamType = node.getElementParameter();
+        for(Object o : listParamType){
+            ElementParameterType ele = ((ElementParameterType)o);
+            if(ele.getName()!=null && ele.getName().equals(EParameterName.FAMILY.getName()) && ele.getValue()!=null){
+               return  ele.getValue().equals(IComponent.JOBLET_FAMILY);
+            }
+        }
+        return false;
+    }
 
     public List<INodeConnector> createConnectors(INode node, IProcess2 process) {
         List<INodeConnector> listConnector = new ArrayList<INodeConnector>();
