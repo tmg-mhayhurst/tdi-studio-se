@@ -18,6 +18,16 @@
 
 class DealJobLibrary_<%=cid%> {
 
+    public String getConfJarName(String confLib, String extraId) {
+        String confJarName = confLib;
+        if (extraId != null && extraId.length() > 0) {
+            String jarName = confLib.substring(0, confLib.lastIndexOf("."));
+            String jarExt = confLib.substring(confLib.lastIndexOf("."));
+            confJarName = jarName + "_" + extraId + jarExt;
+        }
+        return confJarName;
+    }
+
     public String replaceJarPathsFromCrcMap(String originalClassPathLine) throws java.lang.Exception {
         String classPathLine = "";
         String crcMapPath = new java.io.File("../crcMap").getCanonicalPath();
@@ -68,8 +78,10 @@ java.net.URLClassLoader currentLoader<%=cid %> = (java.net.URLClassLoader) Threa
 java.lang.reflect.Method method_<%=cid %> = java.net.URLClassLoader.class.getDeclaredMethod("addURL", new Class[] { java.net.URL.class });
 method_<%=cid %>.setAccessible(true);
 
-String libPath_<%=cid %> = "../lib/<%=confLib %>";
-libPath_<%=cid %> = new DealJobLibrary_<%=cid%>().replaceJarPathsFromCrcMap(libPath_<%=cid %>);
+DealJobLibrary_<%=cid%> dealJobLibrary = new DealJobLibrary_<%=cid%>();
+String confJarName = dealJobLibrary.getConfJarName(<%=confLib %>, this.contextStr);
+String libPath_<%=cid %> = "../lib/" + confJarName;
+libPath_<%=cid %> = dealJobLibrary.replaceJarPathsFromCrcMap(libPath_<%=cid %>);
 method_<%=cid %>.invoke(currentLoader<%=cid %>, new Object[] { new java.io.File(libPath_<%=cid %>).toURL() });
 
 <%}%>

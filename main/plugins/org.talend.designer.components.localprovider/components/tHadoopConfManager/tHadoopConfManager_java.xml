@@ -8,7 +8,7 @@
     AUTHOR="Talend"
     RELEASE_DATE="20170308A"
     STARTABLE="true"
-    TECHNICAL="false"
+    TECHNICAL="true"
     LOG4J_ENABLED="true"
   >
     <SIGNATURE/>
