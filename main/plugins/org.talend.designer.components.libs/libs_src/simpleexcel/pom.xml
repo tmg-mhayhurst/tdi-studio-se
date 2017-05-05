@@ -13,7 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<talend.nexus.url>https://artifacts-oss.talend.com</talend.nexus.url>
-		<java.source.version>1.5</java.source.version>
+		<java.source.version>1.6</java.source.version>
 	</properties>
 
 	<distributionManagement>
