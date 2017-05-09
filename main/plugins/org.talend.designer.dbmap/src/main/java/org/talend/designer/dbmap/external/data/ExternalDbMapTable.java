@@ -194,5 +194,146 @@ public class ExternalDbMapTable extends AbstractExternalMapTable implements Seri
         }
         return cloned;
     }
+    
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ExternalDbMapTable other = (ExternalDbMapTable) obj;
+        
+        if (this.minimized != other.minimized) {
+            return false;
+        }
+        if (this.name == null) {
+            if (other.name != null) {
+                return false;
+            }
+        } else if (!this.name.equals(other.name)) {
+            return false;
+        }
+        if (this.joinType == null) {
+            if (other.joinType != null) {
+                return false;
+            }
+        } else if (!this.joinType.equals(other.joinType)) {
+            return false;
+        }
+        if (this.alias == null) {
+            if (other.alias != null) {
+                return false;
+            }
+        } else if (!this.alias.equals(other.alias)) {
+            return false;
+        }
+        if (this.tableName == null) {
+            if (other.tableName != null) {
+                return false;
+            }
+        } else if (!this.tableName.equals(other.tableName)) {
+            return false;
+        }
+       
+        if (this.customOtherConditionsEntries == null) {
+            if (other.customOtherConditionsEntries != null) {
+                return false;
+            }
+        } else if (!this.customOtherConditionsEntries.equals(other.customOtherConditionsEntries)) {
+            return false;
+        }
+        
+        if (this.customWhereConditionsEntries == null) {
+            if (other.customWhereConditionsEntries != null) {
+                return false;
+            }
+        } else if (!this.customWhereConditionsEntries.equals(other.customWhereConditionsEntries)) {
+            return false;
+        }
+        
+        if (this.metadataTableEntries == null) {
+            if (other.metadataTableEntries != null) {
+                return false;
+            }
+        } else if (!this.metadataTableEntries.equals(other.metadataTableEntries)) {
+            return false;
+        }
+        
+        if(customOtherConditionsEntries!=null && other.customOtherConditionsEntries!=null){
+            if(customOtherConditionsEntries.size() != other.customOtherConditionsEntries.size()){
+                return false;
+            }
+            for(ExternalDbMapEntry oriObj:customOtherConditionsEntries){
+                boolean found = false;
+                for(ExternalDbMapEntry otherObj:other.customOtherConditionsEntries){
+                    if(oriObj.getName().equals(otherObj.getName())){
+                        found = true;
+                        if(!oriObj.equals(otherObj)){
+                            return false;
+                        }
+                        break;
+                    }
+                }
+                if(found == false){
+                    return false;
+                }
+            } 
+        }
+        
+        if(customWhereConditionsEntries!=null && other.customWhereConditionsEntries!=null){
+            if(customWhereConditionsEntries.size() != other.customWhereConditionsEntries.size()){
+                return false;
+            }
+            for(ExternalDbMapEntry oriObj:customWhereConditionsEntries){
+                boolean found = false;
+                for(ExternalDbMapEntry otherObj:other.customWhereConditionsEntries){
+                    if(oriObj.getName().equals(otherObj.getName())){
+                        found = true;
+                        if(!oriObj.equals(otherObj)){
+                            return false;
+                        }
+                        break;
+                    }
+                }
+                if(found == false){
+                    return false;
+                }
+            }
+        }
+        
+        if(metadataTableEntries!=null && other.metadataTableEntries!=null){
+            if(metadataTableEntries.size() != other.metadataTableEntries.size()){
+                return false;
+            }
+            for(ExternalDbMapEntry oriObj:metadataTableEntries){
+                boolean found = false;
+                for(ExternalDbMapEntry otherObj:other.metadataTableEntries){
+                    if(oriObj.getName().equals(otherObj.getName())){
+                        found = true;
+                        if(!oriObj.equals(otherObj)){
+                            return false;
+                        }
+                        break;
+                    }
+                }
+                if(found == false){
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
 
 }

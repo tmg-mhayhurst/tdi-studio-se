@@ -483,6 +483,69 @@ public class ExternalMapperTable extends AbstractExternalMapTable implements Ser
         } else if (!this.globalMapKeysValues.equals(other.globalMapKeysValues)) {
             return false;
         }
+        
+        if(constraintTableEntries!=null && other.constraintTableEntries!=null){
+            if(constraintTableEntries.size() != other.constraintTableEntries.size()){
+                return false;
+            }
+            for(ExternalMapperTableEntry oriObj:constraintTableEntries){
+                boolean found = false;
+                for(ExternalMapperTableEntry otherObj:other.constraintTableEntries){
+                    if(oriObj.getName().equals(otherObj.getName())){
+                        found = true;
+                        if(!oriObj.equals(otherObj)){
+                            return false;
+                        }
+                        break;
+                    }
+                }
+                if(found == false){
+                    return false;
+                }
+            }
+        }
+        
+        if(metadataTableEntries!=null && other.metadataTableEntries!=null){
+            if(metadataTableEntries.size() != other.metadataTableEntries.size()){
+                return false;
+            }
+            for(ExternalMapperTableEntry oriObj:metadataTableEntries){
+                boolean found = false;
+                for(ExternalMapperTableEntry otherObj:other.metadataTableEntries){
+                    if(oriObj.getName().equals(otherObj.getName())){
+                        found = true;
+                        if(!oriObj.equals(otherObj)){
+                            return false;
+                        }
+                        break;
+                    }
+                }
+                if(found == false){
+                    return false;
+                }
+            }
+        }
+        
+        if(globalMapKeysValues!=null && other.globalMapKeysValues!=null){
+            if(globalMapKeysValues.size() != other.globalMapKeysValues.size()){
+                return false;
+            }
+            for(ExternalMapperTableEntry oriObj:globalMapKeysValues){
+                boolean found = false;
+                for(ExternalMapperTableEntry otherObj:other.globalMapKeysValues){
+                    if(oriObj.getName().equals(otherObj.getName())){
+                        found = true;
+                        if(!oriObj.equals(otherObj)){
+                            return false;
+                        }
+                        break;
+                    }
+                }
+                if(found == false){
+                    return false;
+                }
+            }
+        }
         return true;
     }
 

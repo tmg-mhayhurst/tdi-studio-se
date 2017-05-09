@@ -378,5 +378,34 @@ public abstract class AbstractInOutTableImpl extends AbstractDataMapTableImpl im
         result.append(')');
         return result.toString();
     }
+    
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated not
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        AbstractInOutTableImpl other = (AbstractInOutTableImpl) obj;
+        if(this.activateColumnNameFilter != other.activateColumnNameFilter){
+            return false;
+        }
+        if(this.activateColumnNameFilter != other.activateColumnNameFilter){
+            return false;
+        }
+        if(this.activateColumnNameFilter != other.activateColumnNameFilter){
+            return false;
+        }
+        return super.equals(obj);
+    }
 
 } //AbstractInOutTableImpl
